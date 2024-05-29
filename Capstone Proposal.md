@@ -48,6 +48,7 @@ No current plans on using external APIs. I plan to make an even fancier API from
 ### Mockups
 
 ![](db_mockup.png)
+![](frontend_mockup.png)
 
 ### Data
 
