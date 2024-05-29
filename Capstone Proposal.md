@@ -47,7 +47,7 @@ No current plans on using external APIs. I plan to make an even fancier API from
 
 ### Mockups
 
-Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
+![](db_mockup.png)
 
 ### Data
 
