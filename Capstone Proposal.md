@@ -38,12 +38,13 @@ People looking for new music either based on what they like or wanting to check 
 
 ### APIs
 
-No current plans on using external APIs. I plan to make an even fancier API from the ground up, baby! I like to be extra and play on hard mode!
+- Start with a small and simple API to get everything working nicely
+- *(maybe later)* Incorporate a popular API to give people more options and top results and pick if they want what is or isn't popular
 
 ### Sitemap
 
-- Questionnaire
-- Music List
+- Questionnaire to filter down what people might like
+- Music List based on filtered and consolidated criteria
 
 ### Mockups
 
@@ -62,13 +63,13 @@ Describe your data and the relationships between them. You can show this visuall
 Parameters:
 - genre_name
 
-** GET /genres/genre_name**
+**GET /genres/genre_name**
 - Get all bands within a genre
 
 Parameters:
-Everything in /bands
+All bands within the specified genre
 
-** GET /genres/genre_name/related**
+**GET /genres/genre_name/related**
 - Get *(MAYBE top 10)* related to what is chosen
 
 Parameters:
@@ -94,7 +95,7 @@ Parameters:
 - genre_name FROM genres
 *- subgenre_name*
 
-**GET /bands/band_name/albums
+**GET /bands/:band_name/albums**
 - Get all of a band's albums
 
 **GET /songs**
@@ -105,6 +106,9 @@ Parameters:
 - genre
 - subgenre
 - band_name
+
+**GET /bands/:band_name/songs**
+- Get all songs from a certain band
 
 ### Auth
 
@@ -117,8 +121,8 @@ No authentication yet. Thinking of doing that sometime after capstone, but that'
     - Put in the most popular bands from those genres as well as a few key songs people will like
 - Create server
     - Get all data from the database
-    Create logic that filters songs/bands(depending on user input) based on choices
--Create client
+    - Create logic that filters songs/bands(depending on user input) based on choices
+- Create client
     - Build the form that will do all of the filtering magic
     - Create the music list page that will get all of the backend queries
 
