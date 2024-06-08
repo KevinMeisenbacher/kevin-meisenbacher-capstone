@@ -16,9 +16,9 @@ exports.up = function(knex) {
               year_started: 1967
           },
           {
-              artist_name: 'Antonio Vivaldi',
-              albums: 152,
-              songs: 31,
+              artist_name: 'Leonard Cohen',
+              albums: 31,
+              songs: 152,
               genre: 'Country',
               year_started: 1957
           }
@@ -43,9 +43,9 @@ exports.up = function(knex) {
             year_started: 1967
         },
         {
-            artist_name: 'Antonio Vivaldi',
-            albums: 152,
-            songs: 31,
+            artist_name: 'Leonard Cohen',
+            albums: 31,
+            songs: 152,
             genre: 'Country',
             year_started: 1957
         }
