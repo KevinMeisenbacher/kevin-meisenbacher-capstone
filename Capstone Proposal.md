@@ -18,6 +18,7 @@ People looking for new music either based on what they like or wanting to check 
 - Checklists of what genres people want to get into (optional)
 - Checklists of what genres people don't want to filter out crap
 - (later) Popularity filters to skip mainstream stuff
+- Lists of songs based on chosen criteria with respective artists, genres and other basic info
 
 ## Implementation
 
@@ -33,8 +34,9 @@ People looking for new music either based on what they like or wanting to check 
     - express
     - knex
 - Maybes:
-    *- uuid*
-    *- fs*
+    - *uuid*
+    - *fs*
+    - *passport.js*
 
 ### APIs
 

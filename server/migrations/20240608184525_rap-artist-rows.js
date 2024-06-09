@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
             artist_name: 'Eminem',
-              albums: 11,
-              songs: 197, 
+              num_albums: 11,
+              num_songs: 197, 
               genre: 'Rap',
               year_started: 1955
           },
           {
               artist_name: 'DMX',
-              albums: 8,
-              songs: 136,
+              num_albums: 8,
+              num_songs: 136,
               genre: 'Rap',
               year_started: 1998
           },
           {
               artist_name: 'Sir Mix-a-Lot',
-              albums: 4,
-              songs: 43,
+              num_albums: 4,
+              num_songs: 43,
               genre: 'Rap',
               year_started: 1988
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'Eminem',
-              albums: 11,
-              songs: 197, 
+              num_albums: 11,
+              num_songs: 197, 
               genre: 'Rap',
               year_started: 1955
           },
           {
               artist_name: 'DMX',
-              albums: 8,
-              songs: 136,
+              num_albums: 8,
+              num_songs: 136,
               genre: 'Rap',
               year_started: 1998
           },
           {
               artist_name: 'Sir Mix-a-Lot',
-              albums: 4,
-              songs: 43,
+              num_albums: 4,
+              num_songs: 43,
               genre: 'Rap',
               year_started: 1988
           }

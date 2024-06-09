@@ -6,14 +6,14 @@ exports.up = function(knex) {
         table.string('genre').notNullable();
         table.integer('num_albums').notNullable();
         table.integer('num_songs').notNullable();
-        table.timestamp('year_started').notNullable();
+        table.year('year_started').notNullable();
     })
     .createTable('songs', (table) => {
         table.increments('id').primary();
         table.string('song_name').notNullable();
         table.string('band').notNullable();
         table.string('genre').notNullable();
-        table.timestamp('year').notNullable();
+        table.year('year').notNullable();
     })
     .createTable('genres', (table) => {
         table.increments('id').primary();
@@ -21,25 +21,31 @@ exports.up = function(knex) {
     })
     .createTable('fusions', (table) => {
         table.increments('id').primary();
-        table.string('fusion').notNullable();
+        table.string('subgenre').notNullable();
         table
-            .string('genre1_name')
+            .string('genre')
             .notNullable();
         table
-            .string('genre2_name')
-            .notNullable();
+            .string('derivative_name')
         table
-            .integer('genre1_id')
+            .string('inspiration_name')
+        table
+            .integer('genre_id')
             .unsigned()
             .notNullable()
             .references('genres.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
         table
-            .integer('genre2_id')
+            .integer('inspiration_id')
             .unsigned()
-            .notNullable()
             .references('genres.id')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
+        table
+            .integer('derivative_id')
+            .unsigned()
+            .references('subgenres.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
     })

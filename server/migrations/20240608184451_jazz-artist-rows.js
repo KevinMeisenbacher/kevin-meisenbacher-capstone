@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
               artist_name: 'Louis Armstrong',
-              albums: 70,
-              songs: 2973, 
+              num_albums: 70,
+              num_songs: 2973, 
               genre: 'Jazz',
               year_started: 1923
           },
           {
               artist_name: 'Miles Davis',
-              albums: 60,
-              songs: 1269,
+              num_albums: 60,
+              num_songs: 1269,
               genre: 'Jazz',
               year_started: 1944
           },
           {
               artist_name: 'John Coltrane',
-              albums: 45,
-              songs: 706,
+              num_albums: 45,
+              num_songs: 706,
               genre: 'Jazz',
               year_started: 1949
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'Louis Armstrong',
-            albums: 70,
-            songs: 2973, 
+            num_albums: 70,
+            num_songs: 2973, 
             genre: 'Jazz',
             year_started: 1923
         },
         {
             artist_name: 'Miles Davis',
-            albums: 60,
-            songs: 1269,
+            num_albums: 60,
+            num_songs: 1269,
             genre: 'Jazz',
             year_started: 1944
         },
         {
             artist_name: 'John Coltrane',
-            albums: 45,
-            songs: 706,
+            num_albums: 45,
+            num_songs: 706,
             genre: 'Jazz',
             year_started: 1949
         }

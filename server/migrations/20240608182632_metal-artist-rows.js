@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
               artist_name: 'Dio',
-              albums: 18,
-              songs: 113, 
+              num_albums: 18,
+              num_songs: 113, 
               genre: 'Metal',
               year_started: 1983
           },
           {
               artist_name: 'Metallica',
-              albums: 12,
-              songs: 213,
+              num_albums: 12,
+              num_songs: 213,
               genre: 'Metal',
               year_started: 1982
           },
           {
               artist_name: 'Dragonforce',
-              albums: 9,
-              songs: 41,
+              num_albums: 9,
+              num_songs: 41,
               genre: 'Metal',
               year_started: 2002
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'Dio',
-            albums: 18,
-            songs: 113, 
+            num_albums: 18,
+            num_songs: 113, 
             genre: 'Metal',
             year_started: 1983
         },
         {
             artist_name: 'Metallica',
-            albums: 12,
-            songs: 213,
+            num_albums: 12,
+            num_songs: 213,
             genre: 'Metal',
             year_started: 1982
         },
         {
             artist_name: 'Dragonforce',
-            albums: 9,
-            songs: 41,
+            num_albums: 9,
+            num_songs: 41,
             genre: 'Metal',
             year_started: 2002
         }

@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "up": "knex migrate:up",
+    "down": "knex migrate:down",
+    "rollback": "knex migrate:rollback"
   },
   "keywords": [],
   "author": "",

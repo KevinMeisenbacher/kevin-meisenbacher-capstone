@@ -3,22 +3,22 @@ exports.up = function(knex) {
     .insert([
         {
             artist_name: 'Ludwig Van Beethoven',
-            albums: 22,
-            songs: 722, // W H O A,
+            num_albums: 22,
+            num_songs: 722, // W H O A,
             genre: 'Classical',
             year_started: 1767
         },
         {
             artist_name: 'Pyotr Ilyich Tchaikovsky',
-            albums: 0,
-            songs: 163,
+            num_albums: 0,
+            num_songs: 163,
             genre: 'Classical',
             year_started: 1864
         },
         {
             artist_name: 'Antonio Vivaldi',
-            albums: 8,
-            songs: 126,
+            num_albums: 8,
+            num_songs: 126,
             genre: 'Classical',
             year_started: 1676
         }
@@ -30,22 +30,22 @@ exports.down = function(knex) {
     .delete([
         {
             artist_name: 'Ludwig Van Beethoven',
-            albums: 22,
-            songs: 722, // W H O A,
+            num_albums: 22,
+            num_songs: 722, // W H O A,
             genre: 'Classical',
             year_started: 1767
         },
         {
             artist_name: 'Pyotr Ilyich Tchaikovsky',
-            albums: 0,
-            songs: 163,
+            num_albums: 0,
+            num_songs: 163,
             genre: 'Classical',
             year_started: 1864
         },
         {
             artist_name: 'Antonio Vivaldi',
-            albums: 8,
-            songs: 126,
+            num_albums: 8,
+            num_songs: 126,
             genre: 'Classical',
             year_started: 1676
         }

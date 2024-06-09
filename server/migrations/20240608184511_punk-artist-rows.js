@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
             artist_name: 'The Ramones',
-              albums: 14,
-              songs: 164, 
+              num_albums: 14,
+              num_songs: 164, 
               genre: 'Punk',
               year_started: 1976
           },
           {
               artist_name: 'The Pogues',
-              albums: 7,
-              songs: 66,
+              num_albums: 7,
+              num_songs: 66,
               genre: 'Punk',
               year_started: 1982
           },
           {
               artist_name: 'Drain',
-              albums: 2,
-              songs: 10,
+              num_albums: 2,
+              num_songs: 10,
               genre: 'Punk',
               year_started: 2020
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'The Ramones',
-              albums: 14,
-              songs: 164, 
+              num_albums: 14,
+              num_songs: 164, 
               genre: 'Punk',
               year_started: 1976
           },
           {
               artist_name: 'The Pogues',
-              albums: 7,
-              songs: 66,
+              num_albums: 7,
+              num_songs: 66,
               genre: 'Punk',
               year_started: 1982
           },
           {
               artist_name: 'Drain',
-              albums: 2,
-              songs: 10,
+              num_albums: 2,
+              num_songs: 10,
               genre: 'Punk',
               year_started: 2020
           }

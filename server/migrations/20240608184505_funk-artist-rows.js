@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
             artist_name: 'James Brown',
-              albums: 59,
-              songs: 1192, 
+              num_albums: 59,
+              num_songs: 1192, 
               genre: 'Funk',
               year_started: 1953
           },
           {
               artist_name: 'Funkadelic',
-              albums: 10,
-              songs: 112,
+              num_albums: 10,
+              num_songs: 112,
               genre: 'Funk',
               year_started: 1970
           },
           {
               artist_name: 'Rick James',
-              albums: 13,
-              songs: 124,
+              num_albums: 13,
+              num_songs: 124,
               genre: 'Funk',
               year_started: 1978
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'James Brown',
-              albums: 59,
-              songs: 1192, 
+              num_albums: 59,
+              num_songs: 1192, 
               genre: 'Funk',
               year_started: 1953
           },
           {
               artist_name: 'Funkadelic',
-              albums: 10,
-              songs: 112,
+              num_albums: 10,
+              num_songs: 112,
               genre: 'Funk',
               year_started: 1970
           },
           {
               artist_name: 'Rick James',
-              albums: 13,
-              songs: 124,
+              num_albums: 13,
+              num_songs: 124,
               genre: 'Funk',
               year_started: 1978
           }

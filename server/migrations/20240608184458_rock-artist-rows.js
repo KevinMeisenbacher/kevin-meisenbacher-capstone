@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
             artist_name: 'Chuck Berry',
-              albums: 20,
-              songs: 920, 
+              num_albums: 20,
+              num_songs: 920, 
               genre: 'Rock',
               year_started: 1955
           },
           {
               artist_name: 'Motorhead',
-              albums: 23,
-              songs: 299,
+              num_albums: 23,
+              num_songs: 299,
               genre: 'Rock',
               year_started: 1975
           },
           {
               artist_name: 'Janis Joplin',
-              albums: 4,
-              songs: 175,
+              num_albums: 4,
+              num_songs: 175,
               genre: 'Rock',
               year_started: 1962
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'Chuck Berry',
-              albums: 20,
-              songs: 920, 
+              num_albums: 20,
+              num_songs: 920, 
               genre: 'Rock',
               year_started: 1955
           },
           {
               artist_name: 'Motorhead',
-              albums: 23,
-              songs: 299,
+              num_albums: 23,
+              num_songs: 299,
               genre: 'Rock',
               year_started: 1975
           },
           {
               artist_name: 'Janis Joplin',
-              albums: 4,
-              songs: 175,
+              num_albums: 4,
+              num_songs: 175,
               genre: 'Rock',
               year_started: 1962
           }

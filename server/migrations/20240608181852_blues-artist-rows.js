@@ -3,22 +3,22 @@ exports.up = function(knex) {
       .insert([
           {
               artist_name: 'B. B. King',
-              albums: 95,
-              songs: 761, 
+              num_albums: 95,
+              num_songs: 761, 
               genre: 'Blues',
               year_started: 1957
           },
           {
               artist_name: 'Muddy Waters',
-              albums: 64,
-              songs: 493,
+              num_albums: 64,
+              num_songs: 493,
               genre: 'Blues',
               year_started: 1960
           },
           {
               artist_name: 'John Lee Hooker',
-              albums: 75,
-              songs: 782,
+              num_albums: 75,
+              num_songs: 782,
               genre: 'Blues',
               year_started: 1959
           }
@@ -30,22 +30,22 @@ exports.up = function(knex) {
       .delete([
         {
             artist_name: 'B. B. King',
-            albums: 95,
-            songs: 761, 
+            num_albums: 95,
+            num_songs: 761, 
             genre: 'Blues',
             year_started: 1957
         },
         {
             artist_name: 'Muddy Waters',
-            albums: 64,
-            songs: 493,
+            num_albums: 64,
+            num_songs: 493,
             genre: 'Blues',
             year_started: 1960
         },
         {
             artist_name: 'John Lee Hooker',
-            albums: 75,
-            songs: 782,
+            num_albums: 75,
+            num_songs: 782,
             genre: 'Blues',
             year_started: 1959
         }
