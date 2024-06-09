@@ -16,8 +16,9 @@ People looking for new music either based on what they like or wanting to check 
 
 - Checklists of what genres people like
 - Checklists of what genres people want to get into (optional)
-- Checklists of what genres people don't want to filter out crap
-- (later) Popularity filters to skip mainstream stuff
+- Lists of songs based on chosen criteria with respective artists, genres and other basic info
+- (later) *Like/dislike buttons to give people better recommendations based on their tastes*
+- (later) *Popularity filters to skip mainstream stuff*
 
 ## Implementation
 
@@ -33,13 +34,14 @@ People looking for new music either based on what they like or wanting to check 
     - express
     - knex
 - Maybes:
-    *- uuid*
-    *- fs*
+    - *uuid*
+    - *fs*
+    - *passport.js*
 
 ### APIs
 
 - Start with a small and simple API to get everything working nicely
-- *(maybe later)* Incorporate a popular API to give people more options and top results and pick if they want what is or isn't popular
+- (maybe later) *Incorporate a popular API to give people more options and top results and pick if they want what is or isn't popular*
 
 ### Sitemap
 
@@ -48,12 +50,11 @@ People looking for new music either based on what they like or wanting to check 
 
 ### Mockups
 
-![](db_mockup.png)
 ![](frontend_mockup.png)
 
 ### Data
 
-Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
+![](db_mockup.png)
 
 ### Endpoints
 
@@ -64,64 +65,63 @@ Parameters:
 - genre_name
 
 **GET /genres/genre_name**
-- Get all bands within a genre
+- Get all artists within a genre
 
 Parameters:
-All bands within the specified genre
+All artists within the specified genre
 
 **GET /genres/genre_name/related**
 - Get *(MAYBE top 10)* related to what is chosen
 
 Parameters:
-- Everything in /songs
+- Everything in /songs that has a genre or subgenre related to the request
 
-**GET /bands**
-- Get all bands
+**GET /artists**
+- Get all artists
 
 Parameters:
-- band_name
+- artist_name
 - primary_genre
 - starting_year
 - num_albums
 - num_songs
-- num_members
-- home_country
-- member_genders
 
-**GET /bands/band_name/genres
-- Get all genres that can relate to any of a band's songs
+**GET /artists/artist_name/genres
+- Get all genres that relate to a specific artist's genre
 
 Parameters:
 - genre_name FROM genres
+*- genre_name*
+- subgenre_name FROM subgenres
 *- subgenre_name*
 
-**GET /bands/:band_name/albums**
-- Get all of a band's albums
+**GET /artists/:artist_name/albums**
+- Get all of a artist's albums
 
 **GET /songs**
 - Get all songs
 
 Parameters:
 - song_name
-- genre
-- subgenre
-- band_name
+- genre_name
+- subgenre_name
+- artist_name
 
-**GET /bands/:band_name/songs**
-- Get all songs from a certain band
+**GET /artists/:artist_name/songs**
+- Get all songs from a certain artist
 
 ### Auth
 
-No authentication yet. Thinking of doing that sometime after capstone, but that's quite low priority, so ehh
+No authentication yet. Thinking of implementing user accounts sometime after capstone, but that's out of scope for now.
 
 ## Roadmap
 
 - Create database
     - Start with genres I know decently and don't hate. Add fusion genres that relate between those, and maybe throw in some subgenres.
-    - Put in the most popular bands from those genres as well as a few key songs people will like
+    - Put in the most popular artists from those genres as well as a few key songs people will like
 - Create server
     - Get all data from the database
-    - Create logic that filters songs/bands(depending on user input) based on choices
+    - Create logic that filters songs/artists(depending on user input) based on choices
 - Create client
     - Build the form that will do all of the filtering magic
     - Create the music list page that will get all of the backend queries
