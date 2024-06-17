@@ -1,12 +1,11 @@
 exports.up = function(knex) {
-    const genre = (table) => {
+    const genre = (table, genre) => {
         table
-            .integer('genre_id')
+            .integer(genre)
             .unsigned()
             .references('genres.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
-        table.string('genre_name').notNullable();
     }
 
     const subgenre = (table) => {
@@ -16,7 +15,6 @@ exports.up = function(knex) {
             .references('subgenres.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
-        table.string('subgenre_name');
     }
 
     const artist = (table) => {
@@ -26,7 +24,6 @@ exports.up = function(knex) {
             .references('artists.id')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
-        table.string('artist_name').notNullable();
     }
     return knex.schema
     .createTable('genres', (table) => {
@@ -36,21 +33,8 @@ exports.up = function(knex) {
     .createTable('subgenres', (table) => {
         table.increments('id').primary();
         table.string('subgenre_name').notNullable();
-        table // genre
-            .integer('origin_id')
-            .unsigned()
-            .notNullable()
-            .references('genres.id')
-            .onUpdate('CASCADE')
-            .onDelete('CASCADE');
-        table.string('origin_name').notNullable();
-        table
-            .integer('inspiration_id')
-            .unsigned()
-            .references('genres.id')
-            .onUpdate('CASCADE')
-            .onDelete('CASCADE');
-        table.string('inspiration_name')
+        genre(table, 'origin_id');
+        genre(table, 'inspiration_id');
         table
             .integer('derivative_id')
             .unsigned()
@@ -62,7 +46,7 @@ exports.up = function(knex) {
     .createTable('artists', (table) => {
         table.increments('id').primary();
         table.string('artist_name').notNullable();
-        genre(table);
+        genre(table, 'genre_id');
         table.integer('num_albums').notNullable();
         table.integer('num_songs').notNullable();
         table.integer('year_started').notNullable();
@@ -72,7 +56,7 @@ exports.up = function(knex) {
         table.string('album_name').notNullable();
         table.integer('num_songs');
         artist(table);
-        genre(table);
+        genre(table, 'genre_id');
         subgenre(table);
     })
     .createTable('songs', (table) => {
@@ -80,7 +64,7 @@ exports.up = function(knex) {
         table.integer('track_number');
         table.string('song_name').notNullable();
         artist(table);
-        genre(table);
+        genre(table, 'genre_id');
         subgenre(table);
     })
 };
