@@ -13,6 +13,18 @@ app.get('/', (_req, res) => {
     res.send('Server good on ' + PORT)
 })
 
+// Routes
+const genreRoutes = require('./routes/genres');
+app.use('/genres', genreRoutes);
+const subgenreRoutes = require('./routes/subgenres');
+app.use('/subgenres', subgenreRoutes);
+const artistRoutes = require('./routes/artists');
+app.use('/artists', artistRoutes);
+const albumRoutes = require('./routes/albums');
+app.use('/albums', albumRoutes);
+const songRoutes = require('./routes/songs');
+app.use('/songs', songRoutes);
+
 app.listen(PORT, () => {
     console.log('Server listening on ' + PORT);
 })

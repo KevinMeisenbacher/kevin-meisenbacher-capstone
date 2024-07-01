@@ -1,12 +1,35 @@
 require("dotenv").config();
 
 module.exports = {
-  client: "mysql2",
-  connection: {
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    charset: "utf8",
-  },
+  development: {
+    client: "sqlite3",
+    connection: {
+      filename: './music_buddy.db'
+    },
+    migrations: {
+      directory: './migrations'
+    },
+    seeds: {
+      directory: './seeds'
+    },
+    useNullAsDefault: true
+  }
 };
+
+// module.exports = {
+//   development: {
+//     client: 'postgresql',
+//     connection: {
+//       filename: 'music_buddy',
+//       user: 'postgres',
+//       password: process.env.DB_PASSWORD
+//     },
+//     pool: {
+//       min: 2,
+//       max: 10
+//     },
+//     migrations: {
+//       tableName: 'knex_user_migrations'
+//     }
+//   }
+// }
