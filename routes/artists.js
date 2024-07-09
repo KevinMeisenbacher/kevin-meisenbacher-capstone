@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../dbConfig');
 
-// SQL code
 router.get('/', async (_, res) => {
     try { 
         const artistData = await db('artists');

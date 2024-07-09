@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../dbConfig');
 
-// SQL code
 router.get('/', async (req, res) => {
     try { 
         const dbData = await db('subgenres');
