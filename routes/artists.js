@@ -13,10 +13,10 @@ router.get('/', async (_, res) => {
     }
 });
 
-router.get('/:genre_id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try { 
         const artistData = await db('artists')
-            .where('artists.genre_id', req.params.genre_id);
+            .where('artists.id', req.params.id);
         res.json(artistData);
     } catch (err) {
         console.error('Error getting artists', err);

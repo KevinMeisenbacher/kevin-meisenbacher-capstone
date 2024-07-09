@@ -5,8 +5,8 @@ const db = require('../dbConfig');
 // SQL code
 router.get('/', async (_, res) => {
     try { 
-        const subgenreData = await db('songs');
-        res.json(subgenreData);
+        const dbData = await db('songs');
+        res.json(dbData);
     } catch (err) {
         console.error('Error getting songs', err);
         res.status(500).json({err: 'Server error; oh no!'});
@@ -15,9 +15,9 @@ router.get('/', async (_, res) => {
 
 router.get('/:genre_id', async (req, res) => {
     try { 
-        const subgenreData = await db('songs')
+        const dbData = await db('songs')
             .where('songs.genre_id', req.params.genre_id);
-        res.json(subgenreData);
+        res.json(dbData);
     } catch (err) {
         console.error('Error getting songs', err);
         res.status(500).json({err: 'Server error; oh no!'});
@@ -26,10 +26,10 @@ router.get('/:genre_id', async (req, res) => {
 
 router.get('/:genre_id/:second_id', async (req, res) => {
     try { 
-        const subgenreData = await db('songs')
+        const dbData = await db('songs')
         .where('songs.genre_id', req.params.genre_id)
         .orWhere('songs.genre_id', req.params.second_id);
-        res.json(subgenreData);
+        res.json(dbData);
     } catch (err) {
         console.error('Error getting songs', err);
         res.status(500).json({err: 'Server error; oh no!'});

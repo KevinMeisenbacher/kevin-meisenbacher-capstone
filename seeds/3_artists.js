@@ -76,6 +76,7 @@ exports.seed = async function(knex) {
         num_albums: 75,
         num_songs: 782,
         genre_id: 3,
+        subgenre_id: 47,
         year_started: 1959
     },
     //#endregion
@@ -94,6 +95,7 @@ exports.seed = async function(knex) {
         num_albums: 23,
         num_songs: 299, 
         genre_id: 6,
+        subgenre_id: 24,
         year_started: 1975
     },
     {
@@ -120,6 +122,7 @@ exports.seed = async function(knex) {
         num_albums: 12,
         num_songs: 213,
         genre_id: 4,
+        subgenre_id: 8,
         year_started: 1982
     },
     {
@@ -128,6 +131,7 @@ exports.seed = async function(knex) {
         num_albums: 9,
         num_songs: 41,
         genre_id: 4,
+        subgenre_id: 2,
         year_started: 2002
     },
     //#endregion
@@ -206,6 +210,7 @@ exports.seed = async function(knex) {
         num_albums: 2,
         num_songs: 10, 
         genre_id: 8,
+        subgenre_id: 37,
         year_started: 2020
     },
     //#endregion
@@ -276,6 +281,7 @@ exports.seed = async function(knex) {
         num_albums: 3,
         num_songs: 72, 
         genre_id: 11,
+        subgenre_id: 90,
         year_started: 2013
     },
     {
@@ -284,6 +290,7 @@ exports.seed = async function(knex) {
         num_albums: 3,
         num_songs: 80, 
         genre_id: 11,
+        subgenre_id: 90,
         year_started: 2014
     },
     //#endregion

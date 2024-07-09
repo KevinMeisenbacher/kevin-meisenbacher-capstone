@@ -38,8 +38,8 @@ router.get('/:id/:genre_name', async (req, res) => {
 
 router.get('/:id/subgenres', async (req, res) => {
     try { 
-        const subgenreData = await db('subgenres');
-        res.json(subgenreData);
+        const dbData = await db('subgenres');
+        res.json(dbData);
     } catch (err) {
         console.error('Error getting subgenres', err);
         res.status(500).json({err: 'Server error; oh no!'});

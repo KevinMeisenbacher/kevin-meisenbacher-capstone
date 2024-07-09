@@ -42,6 +42,7 @@ exports.up = function(knex) {
         table.integer('id').primary();
         table.string('artist_name').notNullable();
         genre(table, 'genre_id');
+        subgenre(table, 'subgenre_id');
         table.integer('num_albums').notNullable();
         table.integer('num_songs').notNullable();
         table.integer('year_started').notNullable();
