@@ -16,7 +16,7 @@ const jsonSecretKey = "fdda10aa47b4f61c7d5a00c9e3caf32ee640321fcb463260520d27876
 
 app.use((req, res, next) => {
   // Signup and signin are public URLs that don't require a token
-  if (req.url === "/signup" || req.url === "/signin") {
+  if (req.url !== "/") {
     next();
   } else {
     // Format of request is BEARER <token>. Splitting on ' ' will create an
@@ -77,7 +77,6 @@ app.post("/signin", async (req, res) => {
   const users = await db('users');
   const user = users.find(user => user.username === username);
   if (user && user.password === password) {
-    console.log('Found user:', user);
     res.json({ token: jwt.sign({ username: user.username }, jsonSecretKey) });
   } else {
     res.status(403).json({
@@ -91,14 +90,39 @@ app.post("/signin", async (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-  // res.json(req);
-  console.log(req);
+  const token = getToken(req);
+  req.decode = jwt.decode(token);
   res.json(req.decode);
-  // res.json({
-  //   token: token,
-  //   username: req.body.username
-  // })
 });
+
+// Routes for music data
+const genreRoutes = require('./routes/genres');
+app.use('/genres', genreRoutes);
+const subgenreRoutes = require('./routes/subgenres');
+app.use('/subgenres', subgenreRoutes);
+const artistRoutes = require('./routes/artists');
+app.use('/artists', artistRoutes);
+const albumRoutes = require('./routes/albums');
+app.use('/albums', albumRoutes);
+const songRoutes = require('./routes/songs');
+app.use('/songs', songRoutes);
+
+// Routes for interactive filtering
+const likeRoutes = require('./routes/like');
+app.use('/like', likeRoutes);
+const unlikeRoutes = require('./routes/unlike');
+app.use('/unlike', unlikeRoutes);
+const hateRoutes = require('./routes/hate');
+app.use('/hate', hateRoutes);
+const unhateRoutes = require('./routes/unhate');
+app.use('/unhate', unhateRoutes);
+const bangerRoutes = require('./routes/bangers');
+app.use('/bangers', bangerRoutes);
+const crapRoutes = require('./routes/crap');
+app.use('/crap', crapRoutes);
+
+const userRoutes = require('./routes/users');
+app.use('/users', userRoutes);
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);

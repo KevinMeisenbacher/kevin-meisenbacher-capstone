@@ -43,8 +43,10 @@ exports.up = function(knex) {
         table.string('artist_name').notNullable();
         genre(table, 'genre_id');
         subgenre(table, 'subgenre_id');
-        table.integer('num_albums').notNullable();
-        table.integer('num_songs').notNullable();
+        table.integer('num_albums');
+        table.integer('num_songs');
+        table.integer('num_fans');
+        table.integer('num_haters');
         table.integer('year_started').notNullable();
     })
     .createTable('albums',(table) => {
@@ -65,6 +67,37 @@ exports.up = function(knex) {
             .references('albums.id');
         artist(table);
         genre(table, 'genre_id');
+        genre(table, 'inspiration_id');
+    })
+    .createTable('bangers', (table) => {
+        table.integer('id').primary();
+        table
+            .integer('username')
+            .references('users.username');
+        table
+            .integer('artist_id')
+            .references('artists.id');
+        table
+            .integer('genre_id')
+            .references('genres.id');
+        table
+            .integer('inspiration_id')
+            .references('subgenres.inspiration_id');
+    })
+    .createTable('crap', (table) => {
+        table.integer('id').primary();
+        table
+            .integer('username')
+            .references('users.username');
+        table
+            .integer('artist_id')
+            .references('artists.id');
+        table
+            .integer('genre_id')
+            .references('genres.id');
+        table
+            .integer('inspiration_id')
+            .references('subgenres.inspiration_id');
     })
 };
 
@@ -74,6 +107,8 @@ exports.down = function(knex) {
         .dropTable('albums')
         .dropTable('artists')
         .dropTable('genres')
-        .dropTable('subgenres');
+        .dropTable('subgenres')
+        .dropTable('bangers')
+        .dropTable('crap');
 };
   

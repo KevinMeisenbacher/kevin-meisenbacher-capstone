@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../dbConfig');
+const tunes = require('../musicArray');
 
 // SQL code
 router.get('/', async (_, res) => {

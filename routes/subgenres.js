@@ -23,11 +23,11 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/:origin_id/:second_id', async (req, res) => {
+router.get('/:inspiration_id/:id', async (req, res) => {
     try { 
         const dbData = await db('subgenres')
-        .where('subgenres.origin_id', req.params.origin_id)
-        .orWhere('subgenres.origin_id', req.params.second_id);
+        .where(req.params.inspiration_id && 'subgenres.inspiration_id', req.params.inspiration_id)
+        .orWhere(req.params.id && 'genres.id', req.params.id);
         res.json(dbData);
     } catch (err) {
         console.error('Error getting subgenres', err);

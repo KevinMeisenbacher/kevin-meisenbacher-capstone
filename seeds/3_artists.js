@@ -7,6 +7,8 @@ exports.seed = async function(knex) {
         artist_name: 'Ludwig Van Beethoven',
         num_albums: 22,
         num_songs: 722, // W H O A, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 1,
         year_started: 1767
     },
@@ -15,6 +17,8 @@ exports.seed = async function(knex) {
         artist_name: 'Pyotr Ilyich Tchaikovsky',
         num_albums: 0,
         num_songs: 163, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 1,
         year_started: 1864
     },
@@ -23,6 +27,8 @@ exports.seed = async function(knex) {
         artist_name: 'Antonio Vivaldi',
         num_albums: 8,
         num_songs: 126, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 1,
         year_started: 1676
     },
@@ -33,6 +39,8 @@ exports.seed = async function(knex) {
         artist_name: 'Johnny Cash',
         num_albums: 144, // Holy crap; 12^2!
         num_songs: 1561, // W H O A, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 2,
         year_started: 1957
     },
@@ -41,6 +49,8 @@ exports.seed = async function(knex) {
         artist_name: 'Dolly Parton',
         num_albums: 83,
         num_songs: 600, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 2,
         year_started: 1967
     },
@@ -49,6 +59,8 @@ exports.seed = async function(knex) {
         artist_name: 'Leonard Cohen',
         num_albums: 31,
         num_songs: 152, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 2,
         year_started: 1957
     },
@@ -59,6 +71,8 @@ exports.seed = async function(knex) {
         artist_name: 'B. B. King',
         num_albums: 95,
         num_songs: 761, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 3,
         year_started: 1957
     },
@@ -94,6 +108,8 @@ exports.seed = async function(knex) {
         artist_name: 'Motorhead',
         num_albums: 23,
         num_songs: 299, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 6,
         subgenre_id: 24,
         year_started: 1975
@@ -103,6 +119,8 @@ exports.seed = async function(knex) {
         artist_name: 'Janis Joplin',
         num_albums: 4,
         num_songs: 175, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 6,
         year_started: 1962
     },
@@ -113,6 +131,8 @@ exports.seed = async function(knex) {
         artist_name: 'Dio',
         num_albums: 18,
         num_songs: 113, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 4,
         year_started: 1983
     },
@@ -141,6 +161,8 @@ exports.seed = async function(knex) {
         artist_name: 'Louis Armstrong',
         num_albums: 70,
         num_songs: 2973, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 5,
         year_started: 1923
     },
@@ -175,6 +197,8 @@ exports.seed = async function(knex) {
         artist_name: 'Funkadelic',
         num_albums: 10,
         num_songs: 112, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 7,
         year_started: 1970
     },
@@ -183,6 +207,8 @@ exports.seed = async function(knex) {
         artist_name: 'Rick James',
         num_albums: 13,
         num_songs: 124, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 7,
         year_started: 1978
     },
@@ -201,6 +227,8 @@ exports.seed = async function(knex) {
         artist_name: 'The Pogues',
         num_albums: 7,
         num_songs: 66, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 8,
         year_started: 1982
     },
@@ -209,6 +237,8 @@ exports.seed = async function(knex) {
         artist_name: 'Drain',
         num_albums: 2,
         num_songs: 10, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 8,
         subgenre_id: 37,
         year_started: 2020
@@ -228,6 +258,8 @@ exports.seed = async function(knex) {
         artist_name: 'Lady Gaga',
         num_albums: 7,
         num_songs: 23, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 9,
         year_started: 2008
     },
@@ -236,6 +268,8 @@ exports.seed = async function(knex) {
         artist_name: 'Katy Perry',
         num_albums: 6,
         num_songs: 73, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 9,
         year_started: 1962
     },
@@ -254,6 +288,8 @@ exports.seed = async function(knex) {
         artist_name: 'DMX',
         num_albums: 8,
         num_songs: 136, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 10,
         year_started: 1998
     },
@@ -262,6 +298,8 @@ exports.seed = async function(knex) {
         artist_name: 'Sir Mix-a-Lot',
         num_albums: 4,
         num_songs: 43, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 10,
         year_started: 1988
     },
@@ -280,6 +318,8 @@ exports.seed = async function(knex) {
         artist_name: 'Avicii',
         num_albums: 3,
         num_songs: 72, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 11,
         subgenre_id: 90,
         year_started: 2013
@@ -289,6 +329,8 @@ exports.seed = async function(knex) {
         artist_name: 'Skrillex',
         num_albums: 3,
         num_songs: 80, 
+        num_fans: 0, 
+        num_haters: 0, 
         genre_id: 11,
         subgenre_id: 90,
         year_started: 2014
