@@ -3,33 +3,9 @@ const router = express.Router();
 const db = require('../dbConfig');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
-const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-const { PORT, CORS_ORIGIN, SESSION_SECRET } = process.env;
 
 router.use(bodyParser.json());
-
-router.use((req, res, next) => {
-    const authHeader = req.headers.authorization;
-    // console.log('body', req.body);
-    // console.log('headers', req.headers);
-
-    if (authHeader) {
-        const token = authHeader.split(' ')[1];
-
-        jwt.verify(token, SESSION_SECRET, (err, user) => {
-            if (err) {
-                return res.sendStatus(403);
-            }
-
-            req.user = user;
-            next();
-        });
-    } else {
-        // res.sendStatus(401);
-        console.log('auth', req.headers.authorization);
-    }
-});
 
 //register: storing name, email and password and redirecting to home page after signup
 router.post('/', async (req, res) => {
