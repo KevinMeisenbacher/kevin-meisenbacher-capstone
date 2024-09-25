@@ -4,6 +4,7 @@ const db = require('../dbConfig');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const { SESSION_SECRET } = process.env;
+const bcrypt = require("bcrypt");
 
 router.use(bodyParser.json());
 
@@ -12,7 +13,8 @@ router.post('/', async(req, res) => {
     const { username, password } = req.body;
     const users = await db('users');
     const user = users.find(user => user.username === username);
-    if (user && user.password === password) {
+    const isValid = await bcrypt.compare(password, user.password);
+    if (user && isValid) {
         res.json({ token: jwt.sign({ username: user.username }, SESSION_SECRET) });
       } else {
         res.status(403).json({

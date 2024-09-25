@@ -3,11 +3,11 @@ const router = express.Router();
 const db = require('../dbConfig');
 router.use(express.json());
 
-router.post('/:artist_id/:genre_id/:inspiration_id/:username', async (req, res, next) => {
+router.post('/:artist_id/:genre_id/:username', async (req, res, next) => {
     // Basically make sure only logged in users can hate stuff
     for (let prop in req.body) {
         if (!req.body[property]) return res.status(400).send(
-            `Can't like an artist without ${prop}.` +
+            `Can't hate an artist without ${prop}.` +
             !req.body.username && `You have to log in to hate artists so the site 
             can know whose data to update and filter your preferences accordingly.`)
     }
@@ -17,7 +17,6 @@ router.post('/:artist_id/:genre_id/:inspiration_id/:username', async (req, res, 
         .insert({
             'artist_id': req.params.artist_id,
             'genre_id': req.params.genre_id,
-            'inspiration_id': req.params.inspiration_id,
             'username': req.params.username
         });
     } catch (err) {

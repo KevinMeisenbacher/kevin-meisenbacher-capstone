@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 //register: storing name, email and password and redirecting to home page after signup
 router.post('/', async (req, res) => {
 
-    const { username, password, email, phone} = req.body;
+    const { username, password, confirmPassword, email, phone} = req.body;
     const user = await db('users')
     .where('users.username', username);
     if (user.length === 0) {
@@ -18,21 +18,24 @@ router.post('/', async (req, res) => {
         db('users').insert({
             username: username,
             email: email,
-            password: password,
+            password: hash,
             phone: phone
         })
-        .then(console.log(req.body))
         .then((data) => {
             if (data) {
-                res.send(data);
+                if (password === confirmPassword &&
+                    password.length >= 12 &&
+                    password.includes('([a-zA-Z]+)([0-9]+)\W+')
+                ) res.send(data);
             }
         })
+        .then(console.log(req.body))
         .catch(err => console.error(err));
         });
     }
     else {
-        console.error('User already exists');
-        res.status(403).send('User already exists');
+        console.error(`${username} already exists`);
+        res.status(403).send(`${username} already exists`);
     }
 });    
 
