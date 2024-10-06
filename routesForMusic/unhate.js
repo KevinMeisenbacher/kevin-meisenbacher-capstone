@@ -7,7 +7,6 @@ router.post('/:artist_id/:username', async (req, res, next) => {
     try {
         await db('crap')
             .where('artist_id', req.params.artist_id)
-            .andwhere('user_id', req.params.user_id)
             .delete();
     } catch (err) {
         console.error('Didn\'t change artist data right', err);

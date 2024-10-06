@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 //register: storing name, email and password and redirecting to home page after signup
 router.post('/', async (req, res) => {
 
-    const { username, password, confirmPassword, email, phone} = req.body;
+    const { username, password, confirmPassword, email} = req.body;
     const user = await db('users')
     .where('users.username', username);
     if (user.length === 0) {
@@ -18,19 +18,18 @@ router.post('/', async (req, res) => {
         db('users').insert({
             username: username,
             email: email,
-            password: hash,
-            phone: phone
+            password: hash
         })
         .then((data) => {
             if (data) {
                 if (password === confirmPassword &&
                     password.length >= 12 &&
-                    password.includes('([a-zA-Z]+)([0-9]+)\W+')
+                    password.includes('([a-zA-Z]+)([0-9]+)\W+') &&
+                    email.includes('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$')
                 ) res.send(data);
             }
         })
-        .then(console.log(req.body))
-        .catch(err => console.error(err));
+        .catch(err => console.error(err, req.body));
         });
     }
     else {
