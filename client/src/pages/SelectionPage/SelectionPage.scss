@@ -1,0 +1,24 @@
+@use '../../partials/_variables' as *;
+@use '../../partials/_fonts' as *;
+@use '../../partials/_mixins' as *;
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+}
+
+.navimagation-buttons {
+    display: flex;
+}
+
+.butt-nav {
+    @include btn;
+    @include mobile { width: 135px; }
+    font-size: 32px; 
+    margin: 0 5px;
+}

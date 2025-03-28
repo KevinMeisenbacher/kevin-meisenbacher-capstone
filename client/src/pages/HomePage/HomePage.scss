@@ -1,0 +1,77 @@
+@use '../../partials/_variables' as *;
+@use '../../partials/_fonts' as *;
+@use '../../partials/_mixins' as *;
+
+.hidden {
+    display: none;
+}
+
+.form-start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: $black;
+        margin-bottom: 25px;
+        @include mobile { 
+            width: 250px; 
+            padding: 15px;
+        }
+        @include tablet { 
+            width: 550px; 
+            padding: 25px;
+        }
+        @include laptop { width: 844px; }
+    }
+
+    &__edge {
+        display: flex;
+        align-items: center;
+    }
+} 
+
+.butt-confirm {
+    @include btn;
+    @include mobile { width: 280px; }
+    @include tablet { font-size: 64px; }
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $black;
+
+    &__box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        @include mobile { 
+            width: 120px; 
+            height: 145px;
+        }
+        @include tablet { 
+            width: 265px; 
+            height: 245px;
+        }
+        @include laptop { 
+            width: 407px; 
+            height: 387px;
+        }
+
+        border-radius: .3125rem;
+        background-color: $grey;
+
+        &--selected {
+            border: 5px solid $lightBlue;
+            margin: -5px -5px 0 0;
+        }
+    }
+}

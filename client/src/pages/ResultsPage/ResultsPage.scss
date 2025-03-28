@@ -1,0 +1,57 @@
+@use '../../partials/_variables' as *;
+@use '../../partials/_fonts' as *;
+@use '../../partials/_mixins' as *;
+
+@mixin results {
+    @include content-box;
+    align-items: center;
+    height: 500px;
+    @include mobile { 
+        width: 265px; 
+        height: 450px;
+    }
+    @include tablet { width: 265px; }
+    @include laptop { width: 414px; }
+    border-radius: 10px;
+}
+
+.results {
+    &-page {
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile { 
+            width: 300px; 
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @include tablet { width: 600px; }
+        @include laptop { width: 894px; }
+    }
+
+    &-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-box {
+        @include results;
+        background-color: $darkBlue;
+        overflow-y: scroll;
+    }
+}
+
+.options-box {
+    @include results;
+    justify-content: center;
+    background-color: $black;
+}
+
+button {
+    @include mobile {
+        width: 280px;
+        margin-bottom: 50px;
+    }
+}
