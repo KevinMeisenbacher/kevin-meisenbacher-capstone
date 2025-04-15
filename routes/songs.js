@@ -13,22 +13,14 @@ router.get('/', async (_, res) => {
     }
 });
 
-router.get('/:genre_id', async (req, res) => {
+router.get('/:genre_id/:second_id?', async (req, res) => {
+    const { genre_id, second_id } = req.params;
     try { 
-        const dbData = await db('songs')
-            .where('songs.genre_id', req.params.genre_id);
-        res.json(dbData);
-    } catch (err) {
-        console.error('Error getting songs', err);
-        res.status(500).json({err: 'Server error; oh no!'});
-    }
-});
-
-router.get('/:genre_id/:second_id', async (req, res) => {
-    try { 
-        const dbData = await db('songs')
-        .where('songs.genre_id', req.params.genre_id)
-        .orWhere('songs.genre_id', req.params.second_id);
+        let query = db('songs')
+        .where('songs.genre_id', genre_id);
+        if (second_id)
+            query = query.orWhere('songs.genre_id', second_id);
+        const dbData = await query;
         res.json(dbData);
     } catch (err) {
         console.error('Error getting songs', err);
