@@ -9,21 +9,28 @@
     "up": "knex migrate:up",
     "down": "knex migrate:down",
     "rollback": "knex migrate:rollback",
-    "reset": "knex migrate:rollback --all && npm run migrate && npm run seed"
+    "reset": "knex migrate:rollback --all",
+    "rebuild": "npm run migrate && npm run seed"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parse": "^0.1.0",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^4.21.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "mysql2": "^3.10.1",
-    "pg": "^8.14.1",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "pg": "^8.12.0",
     "query-string": "^9.0.0",
+    "server.js": "^1.0.0",
     "sqlite3": "^5.1.7",
     "url": "^0.11.3"
   }

@@ -27,4 +27,16 @@ router.get('/:origin_id?/:second_id?', async (req, res) => {
     }
 });
 
+router.get('/:inspiration_id/:id', async (req, res) => {
+    try { 
+        const dbData = await db('subgenres')
+        .where(req.params.inspiration_id && 'subgenres.inspiration_id', req.params.inspiration_id)
+        .orWhere(req.params.id && 'genres.id', req.params.id);
+        res.json(dbData);
+    } catch (err) {
+        console.error('Error getting subgenres', err);
+        res.status(500).json({err: 'Server error; oh no!'});
+    }
+});
+
 module.exports = router;

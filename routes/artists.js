@@ -8,22 +8,22 @@ router.get('/', async (_, res) => {
         res.json(artistData);
     } catch (err) {
         console.error('Error getting artists', err);
-        res.status(500).json({err: 'Server error; oh no!'});
+        res.status(500).json({err: 'Server error getting artists'});
     }
 });
 
 router.get('/:genre_id?/:second_id?', async (req, res) => {
-    const {origin_id, second_id} = req.params;
+    const {genre_id, second_id} = req.params;
     try { 
         let query = await db('artists')
-        .where('artists.origin_id', origin_id);
+        .where('artists.genre_id', genre_id);
         if (second_id) 
-            query = query.orWhere('artists.origin_id', second_id);
+            query = query.orWhere('artists.genre_id', second_id);
         const dbData = await query;
-        res.json(artistData);
+        res.json(dbData);
     } catch (err) {
-        console.error('Error getting artists', err);
-        res.status(500).json({err: 'Server error; oh no!'});
+        console.error('Didn\'t change artist data right', err);
+        res.status(500).json({err: 'Server error getting artist IDs'});
     }
 });
 
