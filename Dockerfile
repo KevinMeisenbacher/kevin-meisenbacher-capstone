@@ -31,6 +31,9 @@ USER node
 # Copy the rest of the source files into the image.
 COPY . .
 
+# Build the React app
+RUN npm run build
+
 # Expose the port that the application listens on.
 EXPOSE 8080
 
