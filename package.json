@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
@@ -33,5 +33,9 @@
     "server.js": "^1.0.0",
     "sqlite3": "^5.1.7",
     "url": "^0.11.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.99.6",
+    "webpack-cli": "^6.0.1"
   }
 }

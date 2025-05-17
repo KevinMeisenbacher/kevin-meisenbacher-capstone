@@ -12,7 +12,7 @@ app.use(cors());
 
 // NOTE: Secret Keys should NEVER be included in source code. Better kept in
 // environment variables provided on deployment. For demo purposes only.
-const jsonSecretKey = "fdda10aa47b4f61c7d5a00c9e3caf32ee640321fcb463260520d278768d334b9";
+const jsonSecretKey = process.env.JSON_SECRET;
 
 app.use((req, res, next) => {
   // Signup and signin are public URLs that don't require a token

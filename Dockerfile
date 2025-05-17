@@ -11,10 +11,12 @@ ARG NODE_VERSION=20.16.0
 FROM node:${NODE_VERSION}-alpine
 
 # Use production node environment by default.
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 
-WORKDIR /
+WORKDIR /app
+
+COPY package*.json ./
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.npm to speed up subsequent builds.
@@ -31,11 +33,8 @@ USER node
 # Copy the rest of the source files into the image.
 COPY . .
 
-# Build the React app
-RUN npm run build
-
 # Expose the port that the application listens on.
 EXPOSE 8080
 
 # Run the application.
-CMD node --watch index.js
+CMD ["node", "--watch", "src/server.js"]

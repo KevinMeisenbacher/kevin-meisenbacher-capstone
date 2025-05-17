@@ -9,10 +9,18 @@
 # https://github.com/docker/awesome-compose
 services:
   server:
+    image: postgres:8.12
+    restart: always
     build:
       context: .
     environment:
-      NODE_ENV: production
+      NODE_ENV: ${production}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - /c/postgres_data:/var/lib/postgresql/data
     ports:
       - 8080:8080
 
