@@ -10,7 +10,8 @@
     "down": "knex migrate:down",
     "rollback": "knex migrate:rollback",
     "reset": "knex migrate:rollback --all",
-    "rebuild": "npm run migrate && npm run seed"
+    "rebuild": "npm run migrate && npm run seed",
+    "start": "node --watch server.js"
   },
   "keywords": [],
   "author": "",
