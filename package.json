@@ -11,7 +11,8 @@
     "rollback": "knex migrate:rollback",
     "reset": "knex migrate:rollback --all",
     "rebuild": "npm run migrate && npm run seed",
-    "start": "node --watch server.js"
+    "start": "node --watch server.js",
+    "restart": "clear && node --watch server.js"
   },
   "keywords": [],
   "author": "",

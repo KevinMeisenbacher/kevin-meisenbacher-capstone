@@ -8,7 +8,7 @@ const cors = require("cors");
 const db = require('./dbConfig');
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: 'http://localhost:3000'}));
 
 // NOTE: Secret Keys should NEVER be included in source code. Better kept in
 // environment variables provided on deployment. For demo purposes only.

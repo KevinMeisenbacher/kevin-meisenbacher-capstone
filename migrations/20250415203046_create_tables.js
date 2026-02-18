@@ -8,9 +8,9 @@ exports.up = function(knex) {
           .onDelete('SET NULL');
   }
 
-  const subgenre = (table) => {
+  const subgenre = (table, subgenre) => {
       table
-          .integer('subgenre_id')
+          .integer(subgenre)
           .references('id')
           .inTable('subgenres')
           .onUpdate('CASCADE')
@@ -26,6 +26,29 @@ exports.up = function(knex) {
           .onDelete('SET NULL');
   }
   return knex.schema
+        .createTable('users', (table) => {
+            table.increments('id').primary();
+            table.string('avatar_url');
+            table.string('username').notNullable();
+            table.string('password').notNullable();
+            table.string('email').notNullable();
+            table.string('phone').notNullable();
+            table.string('token');
+            table.timestamp('updated_at').defaultTo(knex.fn.now());
+        })
+        .createTable('posts', (table) => {
+            table.increments('id').primary();
+            table.integer('user_id').unsigned().notNullable();
+            table.string('title', 75).notNullable();
+            table.text('content').notNullable();
+            table.timestamp('updated_at').defaultTo(knex.fn.now());
+            table
+            .foreign('user_id')
+            .references('id')
+            .inTable('users')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE');
+        })
   .createTable('genres', (table) => {
       table.increments('id').primary();
       table.string('genre_name').notNullable();
@@ -36,12 +59,7 @@ exports.up = function(knex) {
       genre(table, 'origin_id');
       genre(table, 'inspiration_id');
       table.string('inspiration_name');
-      table
-          .integer('derivative_id')
-          .references('id')
-          .inTable('subgenres')
-          .onUpdate('CASCADE')
-          .onDelete('CASCADE');
+      subgenre(table, 'derivative_id');
       table.string('derivative_name');
   })
   .createTable('artists', (table) => {
@@ -61,7 +79,7 @@ exports.up = function(knex) {
       table.integer('num_songs').notNullable();
       artist(table);
       genre(table, 'genre_id');
-      subgenre(table);
+      subgenre(table, 'subgenre_id');
   })
   .createTable('songs', (table) => {
       table.increments('id').primary();
@@ -72,10 +90,11 @@ exports.up = function(knex) {
           .references('id')
           .inTable('albums')
           .onUpdate('CASCADE')
-          .onDelete('CASCADE');
+          .onDelete('SET NULL');
       artist(table);
       genre(table, 'genre_id');
       genre(table, 'inspiration_id');
+      subgenre(table, 'subgenre_id');
   })
   .createTable('bangers', (table) => {
       table.integer('id').primary();
@@ -107,11 +126,13 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-      .dropTable('songs')
-      .dropTable('albums')
-      .dropTable('artists')
-      .dropTable('genres')
-      .dropTable('subgenres')
-      .dropTable('bangers')
-      .dropTable('crap');
+      .dropTableIfExists('crap')
+      .dropTableIfExists('bangers')
+      .dropTableIfExists('posts')
+      .dropTableIfExists('users')
+      .dropTableIfExists('songs')
+      .dropTableIfExists('albums')
+      .dropTableIfExists('artists')
+      .dropTableIfExists('subgenres')
+      .dropTableIfExists('genres');
 };
