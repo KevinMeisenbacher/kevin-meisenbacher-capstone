@@ -10,6 +10,14 @@ const db = require('./dbConfig');
 app.use(express.json());
 app.use(cors({origin: 'http://localhost:3000'}));
 
+console.log(process.env.PORT); // Should log 8080
+console.log(process.env.CORS_ORIGIN); // Should log the client URL
+console.log(process.env.DB_HOST); // Should log 'port' or the actual DB host
+
+console.log(process.env.PORT); // Should log 8080
+console.log(process.env.CORS_ORIGIN); // Should log the client URL
+console.log(process.env.DB_HOST); // Should log 'port' or the actual DB host
+
 // NOTE: Secret Keys should NEVER be included in source code. Better kept in
 // environment variables provided on deployment. For demo purposes only.
 const jsonSecretKey = process.env.JSON_SECRET;
