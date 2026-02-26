@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../dbConfig');
 router.use(express.json());
 
-router.post('/:artist_id/:genre_id/:inspiration_id/:username', async (req, res, next) => {
+router.post('/:artist_id/:username', async (req, res, next) => {
     // Basically make sure only logged in users can like stuff
     for (let prop in req.body) {
         if (!req.body[property]) return res.status(400).send(
@@ -16,9 +16,7 @@ router.post('/:artist_id/:genre_id/:inspiration_id/:username', async (req, res, 
         const banger = await db('bangers')
             .insert({
                 'artist_id': req.params.artist_id,
-                'genre_id': req.params.genre_id,
-                'inspiration_id': req.params.inspiration_id,
-                'username': req.params.username
+                'user_id': req.params.username
             });
             res.status(201).json(banger);
     } catch (err) {

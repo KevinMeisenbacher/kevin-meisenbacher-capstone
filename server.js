@@ -50,18 +50,16 @@ function getToken(req) {
 const users = {};
 
 app.post("/signup", (req, res) => {
-  const { username, email, password, confirmPassword, phone } = req.body;
+  const { username, email, password, confirmPassword } = req.body;
   users[username] = {
     email,
     password, 
-    confirmPassword,
-    phone
+    confirmPassword
   };
   db('users').insert({
     username: username,
     email: email,
-    password: password,
-    phone: phone
+    password: password
 })
 .then(console.log('Users Object:', users))
 .then((data) => {
