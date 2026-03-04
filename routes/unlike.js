@@ -3,11 +3,12 @@ const router = express.Router();
 const db = require('../dbConfig');
 router.use(express.json());
 
-router.post('/:artist_id/:username', async (req, res, next) => {
+router.post('/:artist_id/:user_id', async (req, res, next) => {
     try {
         await db('bangers')
             .where('artist_id', req.params.artist_id)
             .del();
+        res.redirect(303, 'back');
     } catch (err) {
         console.error('Didn\'t change artist data right', err);
         res.status(500).json({err: 'Server screwed up with your unlike request. ' +

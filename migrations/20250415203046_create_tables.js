@@ -96,7 +96,7 @@ exports.up = function(knex) {
       subgenre(table, 'subgenre_id');
   })
   .createTable('bangers', (table) => {
-      table.integer('id').primary();
+      table.increments('id').primary();
       table
           .integer('user_id')
           .references('id')
@@ -105,11 +105,9 @@ exports.up = function(knex) {
           .integer('artist_id')
           .references('id')
           .inTable('artists');
-          genre(table, 'genre_id');
-          subgenre(table, 'subgenre_id');
   })
   .createTable('crap', (table) => {
-      table.integer('id').primary();
+      table.increments('id').primary();
       table
         .integer('user_id')
         .references('id')
@@ -118,8 +116,6 @@ exports.up = function(knex) {
           .integer('artist_id')
           .references('id')
           .inTable('artists');
-          genre(table, 'genre_id');
-          subgenre(table, 'subgenre_id');
   })
 };
 

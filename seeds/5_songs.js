@@ -75,7 +75,7 @@ exports.seed = async function(knex) {
     {id: 58, track_number: 1, song_name: 'Mommy, What\'s a Funkadelic?', album_id: 58, artist_id: 20, genre_id: 7},
     {id: 59, track_number: 1, song_name: 'Free Your Mind and Your Ass Will Follow', album_id: 59, artist_id: 20, genre_id: 7},
     {id: 60, track_number: 1, song_name: 'Maggot Brain', album_id: 60, artist_id: 20, genre_id: 7},
-    {id: 61, track_number: 1, song_name: 'Stone City Band, Hi!', album_id: 61, artist_id: 21, genre_id: 7},
+    {id: 61, track_number: 1, song_name: 'Stone City Band, Hi', album_id: 61, artist_id: 21, genre_id: 7},
     {id: 62, track_number: 1, song_name: 'Bustin\' Out', album_id: 62, artist_id: 21, genre_id: 7},
     {id: 63, track_number: 1, song_name: 'Fire It Up', album_id: 63, artist_id: 21, genre_id: 7},
     //#endregion
