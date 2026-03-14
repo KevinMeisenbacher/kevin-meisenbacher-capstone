@@ -20,7 +20,7 @@ const jsonSecretKey = process.env.JSON_SECRET;
 
 app.use((req, res, next) => {
   // Signup and signin are public URLs that don't require a token
-  if (req.url !== "/") {
+  if (req.url !== "/users") {
     next();
   } else {
     // Format of request is BEARER <token>. Splitting on ' ' will create an
@@ -52,6 +52,24 @@ function getToken(req) {
 }
 
 const users = {};
+
+app.get('/', async (_, res) => {
+  try {
+    const [songs, artists, genres, subgenres] = await Promise.all([
+      db('songs'),
+      db('artists'),
+      db('genres'),
+      db('subgenres')
+    ]);
+
+    const flat = [...songs, ...artists, ...genres, ...subgenres];
+    res.json({songs, artists, genres, subgenres, all: flat});
+  }
+  catch(err) {
+    console.error('DB fetch', err);
+    res.status(500).json({err: 'Server error'})
+  }
+})
 
 app.post("/signup", (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
