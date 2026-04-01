@@ -35,9 +35,16 @@
     "query-string": "^9.0.0",
     "server.js": "^1.0.0",
     "sqlite3": "^5.1.7",
+    "tsx": "^4.21.0",
     "url": "^0.11.3"
   },
   "devDependencies": {
+    "@snaplet/copycat": "^6.0.0",
+    "@snaplet/seed": "^0.98.0",
+    "@types/pg": "^8.18.0",
+    "supabase": "^2.78.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.2.2",
     "webpack": "^5.99.6",
     "webpack-cli": "^6.0.1"
   }
