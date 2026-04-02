@@ -14,7 +14,7 @@ FROM node:${NODE_VERSION}-alpine
 ENV NODE_ENV=production
 
 
-WORKDIR /app
+WORKDIR /src
 
 COPY package*.json ./
 
@@ -27,14 +27,20 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=cache,target=/root/.npm \
     npm ci --omit=dev
 
+# Copy everything else into the container
+COPY . .
+
+# Fix ownership before switching user
+RUN chown -R node:node /src
+
 # Run the application as a non-root user.
 USER node
 
-# Copy the rest of the source files into the image.
-COPY . .
+# Set the port environment variable
+ENV port=8080
 
 # Expose the port that the application listens on.
 EXPOSE 8080
 
 # Run the application.
-CMD ["node", "--watch", "src/server.js"]
+CMD ["sh", "-c", "npm run migrate && npm run seed && npm start"]

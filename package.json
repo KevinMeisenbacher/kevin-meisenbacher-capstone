@@ -12,8 +12,8 @@
     "reset": "knex migrate:rollback --all",
     "rebuild": "npm run migrate && npm run seed",
     "refresh": "npm run reset && npm run rebuild",
-    "start": "node --watch server.js",
-    "restart": "clear && node --watch server.js"
+    "start": "node --watch src/server.js",
+    "restart": "clear && node --watch src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +26,7 @@
     "express": "^4.19.2",
     "express-session": "^1.18.1",
     "helmet": "^8.1.0",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "knex": "^3.1.0",
     "mysql2": "^3.10.1",
     "passport": "^0.7.0",
