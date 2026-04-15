@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model albums {
+  id          Int        @id @default(autoincrement())
+  album_name  String     @db.VarChar(255)
+  num_songs   Int
+  artist_id   Int?
+  genre_id    Int?
+  subgenre_id Int?
+  artists     artists?   @relation(fields: [artist_id], references: [id], map: "albums_artist_id_foreign")
+  genres      genres?    @relation(fields: [genre_id], references: [id], map: "albums_genre_id_foreign")
+  subgenres   subgenres? @relation(fields: [subgenre_id], references: [id], map: "albums_subgenre_id_foreign")
+  songs       songs[]
+}
+
+model artists {
+  id           Int        @id @default(autoincrement())
+  artist_name  String     @db.VarChar(255)
+  genre_id     Int?
+  subgenre_id  Int?
+  num_albums   Int
+  num_songs    Int
+  num_fans     Int?
+  num_haters   Int?
+  year_started Int
+  albums       albums[]
+  genres       genres?    @relation(fields: [genre_id], references: [id], map: "artists_genre_id_foreign")
+  subgenres    subgenres? @relation(fields: [subgenre_id], references: [id], map: "artists_subgenre_id_foreign")
+  bangers      bangers[]
+  crap         crap[]
+  songs        songs[]
+}
+
+model bangers {
+  id        Int      @id @default(autoincrement())
+  user_id   Int?
+  artist_id Int?
+  artists   artists? @relation(fields: [artist_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "bangers_artist_id_foreign")
+  users     users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "bangers_user_id_foreign")
+}
+
+model crap {
+  id        Int      @id @default(autoincrement())
+  user_id   Int?
+  artist_id Int?
+  artists   artists? @relation(fields: [artist_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "crap_artist_id_foreign")
+  users     users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "crap_user_id_foreign")
+}
+
+model genres {
+  id                                         Int         @id @default(autoincrement())
+  genre_name                                 String      @db.VarChar(255)
+  albums                                     albums[]
+  artists                                    artists[]
+  songs_songs_genre_idTogenres               songs[]     @relation("songs_genre_idTogenres")
+  songs_songs_inspiration_idTogenres         songs[]     @relation("songs_inspiration_idTogenres")
+  subgenres_subgenres_inspiration_idTogenres subgenres[] @relation("subgenres_inspiration_idTogenres")
+  subgenres_subgenres_origin_idTogenres      subgenres[] @relation("subgenres_origin_idTogenres")
+}
+
+model knex_migrations {
+  id             Int       @id @default(autoincrement())
+  name           String?   @db.VarChar(255)
+  batch          Int?
+  migration_time DateTime? @db.Timestamptz(6)
+}
+
+model knex_migrations_lock {
+  index     Int  @id @default(autoincrement())
+  is_locked Int?
+}
+
+model posts {
+  id         Int       @id @default(autoincrement())
+  user_id    Int
+  title      String    @db.VarChar(75)
+  content    String
+  updated_at DateTime? @default(now()) @db.Timestamptz(6)
+  users      users     @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "posts_user_id_foreign")
+}
+
+model songs {
+  id                                  Int        @id @default(autoincrement())
+  track_number                        Int?
+  song_name                           String     @db.VarChar(255)
+  album_id                            Int?
+  artist_id                           Int?
+  genre_id                            Int?
+  inspiration_id                      Int?
+  subgenre_id                         Int?
+  albums                              albums?    @relation(fields: [album_id], references: [id], map: "songs_album_id_foreign")
+  artists                             artists?   @relation(fields: [artist_id], references: [id], map: "songs_artist_id_foreign")
+  genres_songs_genre_idTogenres       genres?    @relation("songs_genre_idTogenres", fields: [genre_id], references: [id], map: "songs_genre_id_foreign")
+  genres_songs_inspiration_idTogenres genres?    @relation("songs_inspiration_idTogenres", fields: [inspiration_id], references: [id], map: "songs_inspiration_id_foreign")
+  subgenres                           subgenres? @relation(fields: [subgenre_id], references: [id], map: "songs_subgenre_id_foreign")
+}
+
+model subgenres {
+  id                                      Int         @id @default(autoincrement())
+  subgenre_name                           String      @db.VarChar(255)
+  origin_id                               Int?
+  inspiration_id                          Int?
+  inspiration_name                        String?     @db.VarChar(255)
+  derivative_id                           Int?
+  derivative_name                         String?     @db.VarChar(255)
+  albums                                  albums[]
+  artists                                 artists[]
+  songs                                   songs[]
+  subgenres                               subgenres?  @relation("subgenresTosubgenres", fields: [derivative_id], references: [id], map: "subgenres_derivative_id_foreign")
+  other_subgenres                         subgenres[] @relation("subgenresTosubgenres")
+  genres_subgenres_inspiration_idTogenres genres?     @relation("subgenres_inspiration_idTogenres", fields: [inspiration_id], references: [id], map: "subgenres_inspiration_id_foreign")
+  genres_subgenres_origin_idTogenres      genres?     @relation("subgenres_origin_idTogenres", fields: [origin_id], references: [id], map: "subgenres_origin_id_foreign")
+}
+
+model users {
+  id         Int       @id @default(autoincrement())
+  avatar_url String?   @db.VarChar(255)
+  username   String    @db.VarChar(255)
+  password   String    @db.VarChar(255)
+  email      String    @db.VarChar(255)
+  token      String?   @db.VarChar(255)
+  updated_at DateTime? @default(now()) @db.Timestamptz(6)
+  bangers    bangers[]
+  crap       crap[]
+  posts      posts[]
+}
