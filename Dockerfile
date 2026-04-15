@@ -37,10 +37,10 @@ RUN chown -R node:node /src
 USER node
 
 # Set the port environment variable
-ENV port=8080
+ENV PORT=8080
 
 # Expose the port that the application listens on.
 EXPOSE 8080
 
 # Run the application.
-CMD ["sh", "-c", "npm run migrate && npm run seed && npm start"]
+CMD ["npm", "start"]
