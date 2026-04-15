@@ -140,6 +140,6 @@ app.use('/crap', crapRoutes);
 const userRoutes = require('./routes/users');
 app.use('/users', userRoutes);
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Listening on ${port}`);
 });
