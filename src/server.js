@@ -51,7 +51,7 @@ const users = {};
 
 app.get('/', async (_, res) => {
   try {
-    const [songs, artists, genres, subgenres] = await Promise.all([
+    const [songs, artists, genres, subgenres] = await Promise?.all([
       db('songs'),
       db('artists'),
       db('genres'),
