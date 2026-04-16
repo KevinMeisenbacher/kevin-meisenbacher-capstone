@@ -63,7 +63,7 @@ app.get('/', async (_, res) => {
   }
   catch(err) {
     console.error('DB fetch', err);
-    res.status(500).json({err: 'Server error'})
+    res.status(500).json({err: 'I am error. Tell the dev to fix me.'})
   }
 })
 
