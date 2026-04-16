@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const development = {
+const dev = {
   client: "pg",
   connection: {
     host: process.env.DB_HOST,
@@ -32,6 +32,6 @@ const production = {
 };
 
 module.exports = {
-  development: development,
+  development: dev,
   production: production
 };
